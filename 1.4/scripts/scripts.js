@@ -1,18 +1,17 @@
 "use strict";
+let date = new Date();
 
-let myName = prompt('Как тебя зовут?');
+let userName = prompt('Как тебя зовут?');
 let surname = prompt('Укажите фамилию');
-let myBirthYear = prompt('Введите ваш год рождения');
+let userBirthYear = prompt('Введите ваш год рождения');
 
-let currentYear = 2020;
-let age = currentYear - myBirthYear;
+let currentYear = date.getFullYear();
+let age = currentYear - userBirthYear;
 
-if(age < 20){
-  alert('Привет ' + myName + ' ' + surname + '!');
+if (age < 20) {
+  alert(`Привет ${userName} ${surname}!`);
+} else if (age >= 20 && age < 40) {
+  alert('Добрый день ' + userName + ' ' + surname);
 } else {
-  if(age >= 20 && age < 40) {
-    alert('Добрый день ' + myName + ' ' + surname);
-  } else {
-    alert('Здравствуйте ' + myName + ' ' + surname);
-  }
+  alert('Здравствуйте ' + userName + ' ' + surname);
 }
