@@ -1,16 +1,14 @@
 "use strict";
 
-const date = new Date(),
-      userName = prompt('Как тебя зовут?'),
-      userSurname = prompt('Укажите фамилию'),
-      userBirthYear = prompt('Введите ваш год рождения'),
-      currentYear = date.getFullYear(),
-      age = currentYear - userBirthYear;
+const startYear = 1900,
+      finishYear = 2020;
 
-if (age < 20) {
-  alert(`Привет ${userName} ${userSurname}!`);
-} else if (age >= 20 && age < 40) {
-  alert(`Добрый день ${userName} ${userSurname}!`);
-} else {
-  alert(`Здравствуйте ${userName} ${userSurname}!`);
+for (let i = startYear; i <= finishYear; i++) {
+  if (i % 4 === 0) {
+    console.log(i);
+  } else if (i % 100 === 0) {
+    console.log(i);
+  } else if (i % 400 === 0) {
+    console.log(i);
+  }
 }
