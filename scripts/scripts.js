@@ -7,7 +7,7 @@ do {
   if (userNumber == null) break;
   if (!+userNumber) continue;
 
-  sumNumber = sumNumber + Number(userNumber);
+  sumNumber += Number(userNumber);
 } while (true);
 
 alert(sumNumber);
