@@ -1,16 +1,13 @@
 "use strict";
+let sumNumber = 0;
 
-const date = new Date(),
-      userName = prompt('Как тебя зовут?'),
-      userSurname = prompt('Укажите фамилию'),
-      userBirthYear = prompt('Введите ваш год рождения'),
-      currentYear = date.getFullYear(),
-      age = currentYear - userBirthYear;
+do {
+  let userNumber = prompt('Ведите число', '');
 
-if (age < 20) {
-  alert(`Привет ${userName} ${userSurname}!`);
-} else if (age >= 20 && age < 40) {
-  alert(`Добрый день ${userName} ${userSurname}!`);
-} else {
-  alert(`Здравствуйте ${userName} ${userSurname}!`);
-}
+  if (userNumber == null) break;
+  if (!+userNumber) continue;
+
+  sumNumber = sumNumber + Number(userNumber);
+} while (true);
+
+alert(sumNumber);
