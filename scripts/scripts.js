@@ -17,19 +17,15 @@ while ( !isNumber(secondNumber) ) {
   secondNumber = prompt('Введите число');
 }
 
-firstNumber = Number(firstNumber);   //можно было бы сравнисать строки,
-secondNumber = Number(secondNumber); //но с числани наверно правельние
+firstNumber = Number(firstNumber);
+secondNumber = Number(secondNumber);
 
 if (firstNumber > secondNumber) {
   alert('Первое чило болье второго');
 } else if (firstNumber < secondNumber) {
   alert('Первое число меньше второго');
-} else if (firstNumber == secondNumber) {
+} else if (firstNumber === secondNumber) {
   alert('Числа равны');
-}
-
-function numberInput(text, num, err) {
-
 }
 
 function isNumber(n) {
@@ -40,5 +36,5 @@ function isNumber(n) {
 }
 
 function err() {
-  return alert('Ошибка, нужно ввести число!');
+  alert('Ошибка, нужно ввести число!');
 }
