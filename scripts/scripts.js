@@ -5,14 +5,14 @@ let firstNumber,
 
 firstNumber = prompt('Введите число');
 
-while ( isNaN(+firstNumber) || firstNumber == '' ) {
+while ( !isNumber(firstNumber) ) {
   alert('Ошибка, нужно ввести число!');
   firstNumber = prompt('Введите число');
 }
 
 secondNumber = prompt('Введите второе число');
 
-while ( isNaN(+secondNumber) || secondNumber == '' ) {
+while ( !isNumber(secondNumber) ) {
   alert('Ошибка, нужно ввести число!');
   secondNumber = prompt('Введите число');
 }
@@ -26,4 +26,15 @@ if (firstNumber > secondNumber) {
   alert('Первое число меньше второго');
 } else if (firstNumber == secondNumber) {
   alert('Числа равны');
+}
+
+function isNumber(n) {
+  if ( !isNaN(parseFloat(n)) && isFinite(n) ) {
+    return true;
+  }
+  return false;
+}
+
+function err() {
+  
 }
