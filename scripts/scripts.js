@@ -6,14 +6,14 @@ let firstNumber,
 firstNumber = prompt('Введите число');
 
 while ( !isNumber(firstNumber) ) {
-  alert('Ошибка, нужно ввести число!');
+  err();
   firstNumber = prompt('Введите число');
 }
 
 secondNumber = prompt('Введите второе число');
 
 while ( !isNumber(secondNumber) ) {
-  alert('Ошибка, нужно ввести число!');
+  err();
   secondNumber = prompt('Введите число');
 }
 
@@ -28,6 +28,10 @@ if (firstNumber > secondNumber) {
   alert('Числа равны');
 }
 
+function numberInput(text, num, err) {
+
+}
+
 function isNumber(n) {
   if ( !isNaN(parseFloat(n)) && isFinite(n) ) {
     return true;
@@ -36,5 +40,5 @@ function isNumber(n) {
 }
 
 function err() {
-  
+  return alert('Ошибка, нужно ввести число!');
 }
