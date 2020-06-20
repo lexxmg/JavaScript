@@ -15,16 +15,9 @@ if (firstNumber > secondNumber) {
 }
 
 function checkNumber(n) {
-  if ( isNumber(n) ) {
+  if ( !isNaN(parseFloat(n)) && isFinite(n) ) {
     return +n;
   }
   alert('Ошибка, нужно ввести число!');
   return checkNumber( prompt('Введите число', '') );
-}
-
-function isNumber(n) {
-  if ( !isNaN(parseFloat(n)) && isFinite(n) ) {
-    return true;
-  }
-  return false;
 }
