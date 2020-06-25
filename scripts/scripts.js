@@ -3,34 +3,29 @@
 let userNumber,
     randomNumber = 76;
 
-userNumber = prompt('Попробуй угадать число', '');
+userNumber = checkNumber( prompt('Попробуй угадать число', '') );
 
-while ( !isNumber(userNumber) ) {
-  userNumber = prompt('Введите число','');
-}
+compatisonNumber(randomNumber, userNumber);
 
-
-
-// while (true) {
-//   if (userNumber > randomNumber) {
-//     userNumber = prompt('Меньше!', '');
-//   } else if (userNumber < randomNumber) {
-//     userNumber = prompt('Больше!', '');
-//   } else if (userNumber === null) {
-//     break;
-//   }
-//
-//   alert('Правильно!');
-//   break;
-// }
 
 function compatisonNumber(r, n) {
-  if (r < n) {
-    return 'Меньше!';
+  if (n === null) {
+    return;
+  } else if (r < n) {
+    return compatisonNumber(r, prompt('Меньше!', '') );
   } else if (r > n) {
-    return 'Больше!';
+    return compatisonNumber(r, prompt('Больше!', '') );
   }
-  return 'Правильно!'
+  return alert('Правильно!');
+}
+
+function checkNumber(n) {
+  if (n === null) return null;
+  if ( isNumber(n) ) {
+    return +n;
+  } else {
+    return checkNumber( prompt('Введите число', '') );
+  }
 }
 
 function isNumber(n) {
