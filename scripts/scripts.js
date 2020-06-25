@@ -1,7 +1,9 @@
 "use strict";
 
 let userNumber,
-    randomNumber = 76;
+    randomNumber;
+
+randomNumber = getRandomInt(100);
 
 userNumber = checkNumber( prompt('Попробуй угадать число', '') );
 
@@ -17,6 +19,10 @@ function compatisonNumber(r, n) {
     return compatisonNumber(r, prompt('Больше!', '') );
   }
   return alert('Правильно!');
+}
+
+function getRandomInt(n) {
+  return Math.floor( Math.random() * n );
 }
 
 function checkNumber(n) {
