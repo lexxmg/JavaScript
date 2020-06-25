@@ -14,9 +14,9 @@ function compatisonNumber(r, n) {
   if (n === null) {
     return;
   } else if (r < n) {
-    return compatisonNumber(r, prompt('Меньше!', '') );
+    return compatisonNumber(r, checkNumber( prompt('Меньше!', '') ) );
   } else if (r > n) {
-    return compatisonNumber(r, prompt('Больше!', '') );
+    return compatisonNumber(r, checkNumber( prompt('Больше!', '') ) );
   }
   return alert('Правильно!');
 }
