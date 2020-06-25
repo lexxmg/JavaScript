@@ -1,23 +1,38 @@
 "use strict";
 
-let firstNumber,
-    secondNumber;
+let userNumber,
+    randomNumber = 76;
 
-firstNumber = checkNumber( prompt('Введите число', '') );
-secondNumber = checkNumber( prompt('Введите число', '') );
+userNumber = prompt('Попробуй угадать число', '');
 
-if (firstNumber > secondNumber) {
-  alert('Первое чило болье второго');
-} else if (firstNumber < secondNumber) {
-  alert('Первое число меньше второго');
-} else if (firstNumber === secondNumber) {
-  alert('Числа равны');
+while ( !isNumber(userNumber) ) {
+  userNumber = prompt('Введите число','');
 }
 
-function checkNumber(n) {
-  if ( !isNaN(parseFloat(n)) && isFinite(n) ) {
-    return +n;
+
+
+// while (true) {
+//   if (userNumber > randomNumber) {
+//     userNumber = prompt('Меньше!', '');
+//   } else if (userNumber < randomNumber) {
+//     userNumber = prompt('Больше!', '');
+//   } else if (userNumber === null) {
+//     break;
+//   }
+//
+//   alert('Правильно!');
+//   break;
+// }
+
+function compatisonNumber(r, n) {
+  if (r < n) {
+    return 'Меньше!';
+  } else if (r > n) {
+    return 'Больше!';
   }
-  alert('Ошибка, нужно ввести число!');
-  return checkNumber( prompt('Введите число', '') );
+  return 'Правильно!'
+}
+
+function isNumber(n) {
+  return !isNaN( parseFloat(n) ) && isFinite(n);
 }
