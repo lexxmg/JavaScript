@@ -1,16 +1,10 @@
 "use strict";
 
-const date = new Date(),
-      userName = prompt('Как тебя зовут?'),
-      userSurname = prompt('Укажите фамилию'),
-      userBirthYear = prompt('Введите ваш год рождения'),
-      currentYear = date.getFullYear(),
-      age = currentYear - userBirthYear;
+const date = new Date();
+const WEEK = ['воскресение', 'понедельник', 'вторник', 'среда',
+              'четверг', 'пятница', 'суббота'];
 
-if (age < 20) {
-  alert(`Привет ${userName} ${userSurname}!`);
-} else if (age >= 20 && age < 40) {
-  alert(`Добрый день ${userName} ${userSurname}!`);
-} else {
-  alert(`Здравствуйте ${userName} ${userSurname}!`);
-}
+const MONTH = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+               'июля', 'августа', 'октября', 'ноября', 'декабря'];
+
+alert( WEEK[date.getDay()] + ' ' + date.getDate() + ' ' + MONTH[date.getMonth()] );
