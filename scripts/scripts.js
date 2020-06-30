@@ -1,16 +1,21 @@
 "use strict";
 
-const date = new Date(),
-      userName = prompt('Как тебя зовут?'),
-      userSurname = prompt('Укажите фамилию'),
-      userBirthYear = prompt('Введите ваш год рождения'),
-      currentYear = date.getFullYear(),
-      age = currentYear - userBirthYear;
+const users = [
+               {name: 'Иван', login: 'ivan', pass: '213re43'},
+               {name: 'Александр', login: 'alex', pass: '36jh8'},
+               {name: 'Виктория', login: 'vika', pass: '4kh808'}
+              ];
+const userName = prompt('Введите свой логин', '');
 
-if (age < 20) {
-  alert(`Привет ${userName} ${userSurname}!`);
-} else if (age >= 20 && age < 40) {
-  alert(`Добрый день ${userName} ${userSurname}!`);
-} else {
-  alert(`Здравствуйте ${userName} ${userSurname}!`);
+for (let i = 0; i < users.length; i++) {
+  console.log(users[i]);
+  if (userName === users[i]['login']) {
+    alert('здравствуйте, ' + users[i]['name']);
+    break;
+  } else if (i === users.length - 1) {
+    alert('Ошибка');
+  }
+  // for ( let prop in users[i] ) {
+  //   console.log(users[i][prop]);
+  // }
 }
