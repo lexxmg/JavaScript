@@ -6,17 +6,28 @@ const users = [
                {name: 'Виктория', login: 'vika', pass: '4kh808'}
               ];
 
-const userName = prompt('Найти', '');
+const obj = searchObject(users, prompt('Ведите имя', '') );
 
-search: for (let i = 0; i < users.length; i++) {
-  for (let param in users[i]) {
-    if ( userName === users[i][param] ) {
-      console.log('Обект № ' + i);
-      console.log(users[i]);
-      break search;
-    }
+if (obj) {
+  const pass = prompt('Введите пароль', '');
+  if (pass === obj.pass) {
+    alert('Здравствуйте, ' + obj.name);
+  } else {
+    alert('Неверный пароль!');
   }
-  if (i === users.length -1) {
-    alert('Свпадений не найдено!!');
+} else {
+  alert('Имя не найдено!');
+}
+
+
+function searchObject(arr, des) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let param in arr[i]) {
+      if (des === arr[i][param]) {
+        return arr[i];
+      }
+    }
+
+    if (i === arr.length - 1) return false;
   }
 }
