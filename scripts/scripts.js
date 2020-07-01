@@ -6,18 +6,17 @@ const users = [
                {name: 'Виктория', login: 'vika', pass: '4kh808'}
               ];
 
-const userName = prompt('Введите свой логин', '');
+const userName = prompt('Найти', '');
 
-for (let i = 0; i < users.length; i++) {
-  if (userName === users[i]['login']) {
-    const userPass = prompt('Ведите пароль', '');
-    if (userPass === users[i]['pass']) {
-      alert('здравствуйте, ' + users[i]['name']);
-    } else {
-      alert('Не верный пароль!');
+search: for (let i = 0; i < users.length; i++) {
+  for (let param in users[i]) {
+    if ( userName === users[i][param] ) {
+      console.log('Обект № ' + i);
+      console.log(users[i]);
+      break search;
     }
-    break;
-  } else if (i === users.length - 1) {
-    alert('Не верный логин!');
+  }
+  if (i === users.length -1) {
+    alert('Свпадений не найдено!!');
   }
 }
