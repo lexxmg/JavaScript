@@ -17,38 +17,22 @@ function getTimeText() {
            ' ' + MONTH[date.getMonth()] +
            ' ' + date.getFullYear() +
            ' года, ' + WEEK[date.getDay()] +
-           ', ' + getHourText(date.getHours()) +
-           ' ' + getMinuteText(date.getMinutes()) +
-           ' ' + getSecText(date.getSeconds()) );
+           ', ' + date.getHours() + ' ' +
+           declOfNum(date.getHours(), ['час', 'часа', 'часов']) +
+           ' ' + date.getMinutes() + ' ' +
+           declOfNum(date.getMinutes(), ['минута', 'минуты', 'минут']) +
+           ' ' + date.getSeconds() + ' ' +
+           declOfNum(date.getSeconds(), ['секунда', 'секунды', 'секунд']) );
 }
 
-function getHourText(h) {
-  if (h === 1 || h === 21 ) {
-    return h + ' час';
-  } else if (h > 4 && h < 21 || h === 0) {
-    return h + ' часов';
-  }
-  return h + ' часа';
-}
 
-function getMinuteText(m) {
-  if (m === 1 || m === 21 || m === 31 || m === 41 || m === 51) {
-    return m + ' минута';
-  } else if (m > 1 && m < 5 || m > 21 && m < 25 ||
-             m > 31 && m < 35 || m > 41 && m < 45 ||
-             m > 51 && m < 55) {
-    return m + ' минуты';
-  }
-  return m + ' минут';
-}
+function declOfNum(number, titles) {
+  const cases = [2, 0, 1, 1, 1, 2];
 
-function getSecText(s) {
-  if (s === 1 || s === 21 || s === 31 || s === 41 || s === 51) {
-    return s + ' секунда';
-  } else if (s > 1 && s < 5 || s > 21 && s < 25 ||
-             s > 31 && s < 35 || s > 41 && s < 45 ||
-             s > 51 && s < 55) {
-    return s + ' секунды';
+  if (number % 100 > 4 && number % 100 < 20) {
+    return titles[2];
+  } else if (number % 10 < 5) {
+    return titles[cases[number % 10]];
   }
-  return s + ' секунд';
+  return titles[2];
 }
