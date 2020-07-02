@@ -6,7 +6,11 @@ const users = [
                {name: 'Виктория', login: 'vika', pass: '4kh808'}
               ];
 
-const obj = searchObject(users, prompt('Ведите имя', '') );
+const obj = users.find(function(obj) {
+              for (let param in obj) {
+                if (this === obj[param]) return true;
+              }
+            }, prompt('Ведите имя', ''));
 
 if (obj) {
   const pass = prompt('Введите пароль', '');
@@ -17,17 +21,4 @@ if (obj) {
   }
 } else {
   alert('Имя не найдено!');
-}
-
-
-function searchObject(arr, des) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let param in arr[i]) {
-      if (des === arr[i][param]) {
-        return arr[i];
-      }
-    }
-
-    if (i === arr.length - 1) return false;
-  }
 }
