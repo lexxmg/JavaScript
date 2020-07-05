@@ -9,14 +9,14 @@ const counter = makeCounter(10);
 
 userNumber = checkNumber( prompt('Попробуй угадать число', '') );
 
-compatisonNumber(randomNumber, userNumber);
+comparisonNumber(randomNumber, userNumber);
 
 
 function makeCounter(count) {
   return () => count--;
 }
 
-function compatisonNumber(r, n) {
+function comparisonNumber(r, n) {
   const i = counter();
 
   if (i < 1) {
@@ -28,9 +28,9 @@ function compatisonNumber(r, n) {
   if (n === null) {
     return;
   } else if (r() < n) {
-    return compatisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
+    return comparisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
   } else if (r() > n) {
-    return compatisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
+    return comparisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
   }
   return alert('Правильно!');
 }
