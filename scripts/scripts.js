@@ -5,7 +5,7 @@ let userNumber,
 
 randomNumber = getRandomInt(100);
 
-const counter = makeCounter(3);
+const counter = makeCounter(10);
 
 userNumber = checkNumber( prompt('Попробуй угадать число', '') );
 
@@ -27,16 +27,18 @@ function compatisonNumber(r, n) {
 
   if (n === null) {
     return;
-  } else if (r < n) {
+  } else if (r() < n) {
     return compatisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
-  } else if (r > n) {
+  } else if (r() > n) {
     return compatisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
   }
   return alert('Правильно!');
 }
 
 function getRandomInt(n) {
-  return Math.floor( Math.random() * n );
+  const r = Math.floor( Math.random() * n );
+
+  return () => r;
 }
 
 function checkNumber(n) {
