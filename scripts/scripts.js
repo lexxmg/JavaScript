@@ -1,55 +1,56 @@
 "use strict";
 
-let userNumber,
-    randomNumber;
 
-randomNumber = getRandomInt(100);
-
-const counter = makeCounter(10);
-
-userNumber = checkNumber( prompt('Попробуй угадать число', '') );
-
-comparisonNumber(randomNumber, userNumber);
-
-
-function makeCounter(count) {
-  return () => count--;
+{
+  window.userNumber = prompt('Попробуй угадать число', '');
 }
 
-function comparisonNumber(r, n) {
-  const i = counter();
+{
+  const randomNumber = getRandomInt(100);
+  const counter = makeCounter(10);
+  const userNumber = checkNumber(window.userNumber);
 
-  if (i < 1) {
-    alert('Колличество попыток, закончилось');
-    window.counter = null;
-    return;
+  compatisonNumber(randomNumber, userNumber);
+
+
+  function makeCounter(count) {
+    return () => count--;
   }
 
-  if (n === null) {
-    return;
-  } else if (r() < n) {
-    return comparisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
-  } else if (r() > n) {
-    return comparisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
+  function compatisonNumber(r, n) {
+    const i = counter();
+
+    if (i < 1) {
+      alert('Колличество попыток, закончилось');
+      return;
+    }
+
+    if (n === null) {
+      return;
+    } else if (r() < n) {
+      return compatisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
+    } else if (r() > n) {
+      return compatisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
+    }
+    return alert('Правильно!');
   }
-  return alert('Правильно!');
-}
 
-function getRandomInt(n) {
-  const r = Math.floor( Math.random() * n );
+  function getRandomInt(n) {
+    const r = Math.floor( Math.random() * n );
 
-  return () => r;
-}
-
-function checkNumber(n) {
-  if (n === null) return null;
-  if ( isNumber(n) ) {
-    return +n;
-  } else {
-    return checkNumber( prompt('Введите число', '') );
+    return () => r;
   }
-}
 
-function isNumber(n) {
-  return !isNaN( parseFloat(n) ) && isFinite(n);
+  function checkNumber(n) {
+    if (n === null) return null;
+    if ( isNumber(n) ) {
+      return +n;
+    } else {
+      return checkNumber( prompt('Введите число', '') );
+    }
+  }
+
+  function isNumber(n) {
+    return !isNaN( parseFloat(n) ) && isFinite(n);
+  }
 }
