@@ -1,3 +1,3 @@
-'use strick.js';
+'use strick';
 
 start( prompt('Попробуй угадать число', '') );
