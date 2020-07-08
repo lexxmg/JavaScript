@@ -1,22 +1,21 @@
 'use strict';
 
 {
-  const randomNumber = getRandomInt(100);
+  const randomNumber = getRandomInt(1, 1000);
   const counter = makeCounter(10);
-  const userNumber = checkNumber(window.userNumber);
-
-  compatisonNumber(randomNumber, userNumber);
 
 
-  function makeCounter(count) {
-    return () => count--;
+  window.start = function(userNumber) {
+    return compatisonNumber(randomNumber, userNumber);
   }
 
   function compatisonNumber(r, n) {
+    n = checkNumber(n);
     const i = counter();
 
     if (i < 1) {
-      alert('Колличество попыток, закончилось');
+      alert('Колличество попыток, закончилось! ' +
+            'Загадангое число ' + r() );
       return;
     }
 
@@ -30,10 +29,16 @@
     return alert('Правильно!');
   }
 
-  function getRandomInt(n) {
-    const r = Math.floor( Math.random() * n );
+  function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    const r = Math.floor(Math.random() * (max - min + 1)) + min;
 
     return () => r;
+  }
+
+  function makeCounter(count) {
+    return () => count--;
   }
 
   function checkNumber(n) {
