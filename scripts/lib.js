@@ -24,7 +24,7 @@
     } else if (r() < n) {
       return compatisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
     } else if (r() > n) {
-      return compatisonNumber(r, checkNumber( prompt('Больше! ' + i , '') ) );
+      return compatisonNumber(r, checkNumber( prompt('Больше! ' + i, '') ) );
     }
     return alert('Правильно!');
   }
