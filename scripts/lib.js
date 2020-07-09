@@ -1,32 +1,41 @@
 'use strict';
 
 {
-  const randomNumber = getRandomInt(1, 1000);
-  const counter = makeCounter(10);
+  window.start = function() {
+    let userNumber = prompt('Попробуй угадать число', '');
+    const randomNumber = getRandomInt(1, 1000);
+    const counter = makeCounter(10);
+    console.log(userNumber);
+    console.log( randomNumber() );
 
+    return (
+      function compatisonNumber() {
+        const userNum = checkNumber(userNumber);
+        const i = counter();
+        console.log(userNum);
+        console.log(i);
 
-  window.start = function(userNumber) {
-    return compatisonNumber(randomNumber, userNumber);
-  }
+        if (i < 1) {
+          alert('Колличество попыток, закончилось! ' +
+              'Загадангое число ' + randomNumber() );
+      //return;
 
-  function compatisonNumber(r, n) {
-    const userNumber = checkNumber(n);
-    const i = counter();
+          alert('Всё заново');
+          start();
+        }
 
-    if (i < 1) {
-      alert('Колличество попыток, закончилось! ' +
-            'Загадангое число ' + r() );
-      return;
-    }
-
-    if (userNumber === null) {
-      return;
-    } else if (r() < userNumber) {
-      return compatisonNumber(r, prompt('Меньше! ' + i, '') );
-    } else if (r() > userNumber) {
-      return compatisonNumber(r, prompt('Больше! ' + i, '') );
-    }
-    return alert('Правильно!');
+        if (userNum === null) {
+          return;
+        } else if (randomNumber() < userNum) {
+          userNumber = checkNumber( prompt('Меньше! ' + i, '') );
+          return compatisonNumber();
+        } else if (randomNumber() > userNum) {
+          userNumber = checkNumber( prompt('Больше! ' + i, '') );
+          return compatisonNumber();
+        }
+        return alert('Правильно!');
+      }
+    )();
   }
 
   function getRandomInt(min, max) {
