@@ -10,7 +10,7 @@
   }
 
   function compatisonNumber(r, n) {
-    n = checkNumber(n);
+    const userNumber = checkNumber(n);
     const i = counter();
 
     if (i < 1) {
@@ -19,12 +19,12 @@
       return;
     }
 
-    if (n === null) {
+    if (userNumber === null) {
       return;
-    } else if (r() < n) {
-      return compatisonNumber(r, checkNumber( prompt('Меньше! ' + i, '') ) );
-    } else if (r() > n) {
-      return compatisonNumber(r, checkNumber( prompt('Больше! ' + i, '') ) );
+    } else if (r() < userNumber) {
+      return compatisonNumber(r, prompt('Меньше! ' + i, '') );
+    } else if (r() > userNumber) {
+      return compatisonNumber(r, prompt('Больше! ' + i, '') );
     }
     return alert('Правильно!');
   }
@@ -32,7 +32,7 @@
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    const r = Math.floor(Math.random() * (max - min + 1)) + min;
+    const r = Math.floor( Math.random() * (max - min + 1) ) + min;
 
     return () => r;
   }
