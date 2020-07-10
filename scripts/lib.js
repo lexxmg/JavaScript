@@ -1,42 +1,34 @@
 'use strict';
 
 {
-  window.start = function() {
-    let userNumber = prompt('Попробуй угадать число', '');
+  window.makeGame = function() {
     const randomNumber = getRandomInt(1, 1000);
     const counter = makeCounter(10);
-    console.log(userNumber);
-    console.log( randomNumber() );
+    let userNumber = checkNumber( prompt('Введите число', '') );
 
-    return (
-      function compatisonNumber() {
-        const userNum = checkNumber(userNumber);
-        const i = counter();
-        console.log(userNum);
-        console.log(i);
+    return (function game() {
+      const i = counter();
 
-        if (i < 1) {
-          alert('Колличество попыток, закончилось! ' +
-              'Загадангое число ' + randomNumber() );
-      //return;
-
-          alert('Всё заново');
-          start();
-        }
-
-        if (userNum === null) {
+      if (i === 0) {
+        if ( confirm('Попытки закончались, загаданное число ' + randomNumber() + ' Продолжить?') ) {
+          return makeGame();
+        } else {
           return;
-        } else if (randomNumber() < userNum) {
-          userNumber = checkNumber( prompt('Меньше! ' + i, '') );
-          return compatisonNumber();
-        } else if (randomNumber() > userNum) {
-          userNumber = checkNumber( prompt('Больше! ' + i, '') );
-          return compatisonNumber();
         }
+      } else if (userNumber === null) {
+        return;
+      } else if (randomNumber() < userNumber) {
+        userNumber = checkNumber( prompt('Меньше! ' + i, '') );
+        return game();
+      } else if (randomNumber() > userNumber) {
+        userNumber = checkNumber( prompt('Больше! ' + i, '') );
+        return game();
+      } else if (randomNumber() === userNumber) {
         return alert('Правильно!');
       }
-    )();
+    })();
   }
+
 
   function getRandomInt(min, max) {
     min = Math.ceil(min);
