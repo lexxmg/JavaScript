@@ -2,21 +2,23 @@
 
 const userList = new UserList();
 
-userList.add( new Users( prompt('Введите полное имя', '') ) );
+userList.add();
 
-userList.list();
+userList.getAllUsers();
 
 
 function UserList() {
   const arr = [];
 
-  this.add = function(obj){
+  this.add = function(){
+    const obj = new Users( prompt('Введите полное имя', '') );
+
     if (obj.null === null) return;
     arr.push(obj);
-    this.add( new Users( prompt('Введите полное имя', '') ) );
+    return this.add();
   }
 
-  this.list = function() {
+  this.getAllUsers = function() {
     for (let i = 0; i < arr.length; i++) {
       console.log(arr[i].firstName + ' ' +
                   arr[i].lastName + ' ' +
@@ -25,7 +27,7 @@ function UserList() {
     }
   }
 
-  this.array = () => arr;
+  this.array = arr;
 }
 
 function Users(str) {
