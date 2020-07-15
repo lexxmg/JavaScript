@@ -8,26 +8,24 @@ userList.getAllUsers();
 
 
 function UserList() {
-  const arr = [];
+  this.users = [];
 
   this.add = function(){
     const obj = new Users( prompt('Введите полное имя', '') );
 
     if (obj.null === null) return;
-    arr.push(obj);
+    this.users.push(obj);
     return this.add();
   }
 
   this.getAllUsers = function() {
-    for (let i = 0; i < arr.length; i++) {
-      console.log(arr[i].firstName + ' ' +
-                  arr[i].lastName + ' ' +
-                  arr[i].regDate
+    for (let i = 0; i < this.users.length; i++) {
+      console.log(this.users[i].firstName + ' ' +
+                  this.users[i].lastName + ' ' +
+                  this.users[i].regDate
                  );
     }
   }
-
-  this.array = arr;
 }
 
 function Users(str) {
