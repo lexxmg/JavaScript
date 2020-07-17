@@ -1,23 +1,25 @@
 "use strict";
 
-const users = [
-               {name: 'Иван', login: 'ivan', pass: '213re43'},
-               {name: 'Александр', login: 'alex', pass: '36jh8'},
-               {name: 'Виктория', login: 'vika', pass: '4kh808'}
-              ];
+function User(firstName, lastName) {
+  this.firstName = firstName;
+  this.lastName = lastName;
 
-const userName = prompt('Введите свой логин', '');
-
-for (let i = 0; i < users.length; i++) {
-  if (userName === users[i]['login']) {
-    const userPass = prompt('Ведите пароль', '');
-    if (userPass === users[i]['pass']) {
-      alert('здравствуйте, ' + users[i]['name']);
-    } else {
-      alert('Не верный пароль!');
-    }
-    break;
-  } else if (i === users.length - 1) {
-    alert('Не верный логин!');
+  this.getFullName = function() {
+    return this.firstName + ' ' + this.lastName;
   }
 }
+
+function Manager(firstName, lastName) {
+  User.apply(this, arguments);
+
+  this.seyHello = function() {
+    alert('Здравствуйте');
+  }
+
+  this.changeName = function(name) {
+    this.firstName = name;
+  }
+}
+
+const u = new User('John', 'Doe');
+const m = new Manager('Jene', 'Doe');
