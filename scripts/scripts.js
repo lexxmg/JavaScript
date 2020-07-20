@@ -1,11 +1,15 @@
 "use strict";
 
+const car = new Car(4, 'white');
+
 
 function Vehicles(color) {
   this.color = color;
 }
 
-function Car(wheels) {
+function Car(wheels, color) {
+  Vehicles.call(this, color);
+
   this.wheels = wheels;
 }
 
