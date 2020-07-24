@@ -2,16 +2,29 @@
 
 
 
-function Vehicles(color) {
+function Vehicles(color, speed) {
   this.color = color;
+  this.speed = speed;
 }
 
 Vehicles.prototype.setColor = function(color) {
   this.color = color;
 }
 
-function Car(wheels, color) {
-  Vehicles.call(this, color);
+Vehicles.prototype.setSpeed = function(speed) {
+  this.speed = speed;
+}
+
+Vehicles.prototype.getAllProp = function() {
+  for (let key in this) {
+    if ( this.hasOwnProperty(key) ) {
+      console.log(key + ' = ' + this[key]);
+    }
+  }
+}
+
+function Car(wheels, color, speed) {
+  Vehicles.call(this, color, speed);
 
   this.wheels = wheels;
 }
@@ -20,49 +33,31 @@ Car.prototype = Object.create(Vehicles.prototype);
 Car.prototype.constructor = Vehicles;
 
 
-function Airplane(wingspan) {
+function Airplane(wingspan, color, speed) {
+  Vehicles.call(this, color, speed);
+
   this.wingspan = wingspan;
 }
 
-function Ship(displacement) {
+Airplane.prototype = Object.create(Vehicles.prototype);
+Airplane.prototype.constructor = Vehicles;
+
+function Ship(displacement, color, speed) {
+  Vehicles.call(this, color, speed);
+
   this.displacement = displacement;
 }
 
-const car = new Car(4, 'white');
-const v = new Vehicles('black');
+Ship.prototype = Object.create(Vehicles.prototype);
+Ship.prototype.constructor = Vehicles;
 
 
-let Character = function(settings) {
-  this.name = settings.name;
-  this.health = settings.health || 100;
-  this.exp = settings.exp || 0;
-  this.strength = settings.strength || 1;
-};
+const car = new Car(4, 'white', 120);
+const airplane = new Airplane(10, 'white', 1200);
+const ship = new Ship(1000, 'gray', 20)
 
-Character.prototype.walk = function(steps) {
-  console.log(this.name + ' прошел ' + steps + ' шагов');
-};
-
-Character.prototype.run = function(steps) {
-  console.log(this.name + ' пробежал ' + 2 * steps + ' шагов');
-};
-
-
-let Human = function(settings) {
-  Character.apply(this, arguments); // наследуем все свойства от Character
-};
-
-Human.prototype = Object.create(Character.prototype);  // наследуем методы через прототип
-Human.prototype.constructor = Character;  // прописываем имя конструктора
-
-Human.prototype.build = function(buildingStrength) {
-  this.health += buildingStrength;
-};
-
-let human = new Human({name: 'John', health: 10});
-
-console.log(human.health);
-human.build(10);
-console.log(human.health);
-human.walk(10);
-human.run(50);
+car.getAllProp();
+console.log('измениение цвета');
+car.setColor('black');
+car.setSpeed('180');
+car.getAllProp();
