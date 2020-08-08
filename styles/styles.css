@@ -15,6 +15,10 @@
   text-align: center;
 }
 
+.hide {
+  display: none;
+}
+
 .container__text {
   font-weight: 700;
 
