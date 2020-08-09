@@ -67,6 +67,8 @@
 .inner-2__textarea {
   width: 250px;
   height: 200px;
+
+  font-size: 20px;
 }
 
 .inner-2__text {
@@ -84,11 +86,12 @@
 .inner-3__block {
   display: flex;
   align-items: center;
+  justify-content: center;
 
   width: 250px;
   height: 250px;
 
-  background-color: gray;
+  background-color: #7ddaee;
 
   border-radius: 50%;
 
