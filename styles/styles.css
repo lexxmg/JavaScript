@@ -1,5 +1,59 @@
+* {
+  box-sizing: border-box;
+}
+
 .title {
   width: 100%;
 
   text-align: center;
+}
+
+.container-fixed {
+  width: 400px;
+
+  margin: 0 auto;
+}
+
+.container {
+  font-size: 17px;
+}
+
+.container__list {
+
+}
+
+.list {
+
+}
+
+.list__item {
+
+}
+
+.list__item--done {
+  text-decoration: line-through;
+}
+
+.container__iput {
+  width: 290px;
+  height: 30px;
+
+  border: 1px solid black;
+
+  font-size: inherit;
+}
+
+.container__btn {
+  width: 100px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 1px solid black;
+
+  font-size: inherit;
+}
+
+.container__btn:hover {
+  background-color: green;
 }
