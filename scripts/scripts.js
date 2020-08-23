@@ -19,7 +19,12 @@ container.addEventListener('click', (event) => {
   }
 
   if (event.target.tagName === 'LI') {
-    console.log(event.target);
     event.target.classList.toggle('list__item--done');
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    btn.click();
   }
 });
