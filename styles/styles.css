@@ -34,7 +34,15 @@
   text-decoration: line-through;
 }
 
-.container__iput {
+.container__form {
+
+}
+
+.form {
+
+}
+
+.form__iput {
   width: 290px;
   height: 30px;
 
@@ -43,7 +51,7 @@
   font-size: inherit;
 }
 
-.container__btn {
+.form__btn {
   width: 100px;
   height: 30px;
 
