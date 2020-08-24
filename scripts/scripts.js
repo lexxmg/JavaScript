@@ -6,10 +6,8 @@ const container = document.body.querySelector('.container'),
       inputText = container.querySelector('.form__iput'),
       btn = container.querySelector('.form__btn');
 
-list.addEventListener('click', (event) => {
-  if (event.target.tagName === 'LI') {
-    event.target.classList.toggle('list__item--done');
-  }
+list.addEventListener('click', event => {
+  event.target.classList.toggle('list__item--done');
 });
 
 form.addEventListener('submit', event => {
@@ -20,5 +18,5 @@ form.addEventListener('submit', event => {
     list.insertAdjacentHTML('beforeend', `<li class="list__item">${inputText.value}</li>`);
     inputText.value = '';
   }
-  console.log(event);
+  //console.log(event);
 });
