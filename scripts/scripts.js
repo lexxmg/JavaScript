@@ -10,10 +10,11 @@ container.addEventListener('click', (event) => {
     if (inputText.value === '') {
       alert('Поле ввода должно быть заполнено!');
     } else {
-      const item = document.createElement('li');
-      list.append(item);
-      item.className = 'list__item';
-      item.textContent = inputText.value;
+      list.insertAdjacentHTML('beforeend', `<li class = "list__item">${inputText.value}</li>`);
+      // const item = document.createElement('li');
+      // list.append(item);
+      // item.className = 'list__item';
+      // item.textContent = inputText.value;
       inputText.value = '';
     }
   }
