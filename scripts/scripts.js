@@ -28,3 +28,13 @@ inputText.addEventListener('keydown', (event) => {
     btn.click();
   }
 });
+
+function makeElement(el, text, cl) {
+  el = document.createElement(el);
+  el.innerHTML = text;
+
+  if (cl) {
+    el.className = cl;
+  }
+  return el;
+}
