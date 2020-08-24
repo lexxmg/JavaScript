@@ -23,9 +23,8 @@ container.addEventListener('click', (event) => {
   }
 });
 
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter' && inputText.value) {
-    console.log('click');
+inputText.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
     btn.click();
   }
 });
