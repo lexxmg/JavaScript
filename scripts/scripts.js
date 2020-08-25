@@ -3,7 +3,6 @@
 const container = document.body.querySelector('.container'),
       list = container.querySelector('.container__list'),
       form = container.querySelector('.container__form'),
-      inputText = container.querySelector('.form__iput'),
       btn = container.querySelector('.form__btn');
 
 list.addEventListener('click', event => {
@@ -12,11 +11,10 @@ list.addEventListener('click', event => {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  if (inputText.value === '') {
+  if (form.text.value === '') {
     alert('Поле ввода должно быть заполнено!');
   } else {
-    list.insertAdjacentHTML('beforeend', `<li class="list__item">${inputText.value}</li>`);
-    inputText.value = '';
+    list.insertAdjacentHTML('beforeend', `<li class="list__item">${form.text.value}</li>`);
+    form.text.value = '';
   }
-  //console.log(event);
 });
