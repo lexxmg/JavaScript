@@ -2,11 +2,12 @@
 
 const container = document.body.querySelector('.container'),
       list = container.querySelector('.container__list'),
-      form = container.querySelector('.container__form'),
-      btn = container.querySelector('.form__btn');
+      form = container.querySelector('.container__form');
 
 list.addEventListener('click', event => {
-  event.target.classList.toggle('list__item--done');
+  if ( event.target.classList.contains('list__item') ) {
+    event.target.classList.toggle('list__item--done');
+  }
 });
 
 form.addEventListener('submit', event => {
