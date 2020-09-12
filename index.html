@@ -2,7 +2,7 @@
 <html lang="ru">
   <head>
     <meta charset="utf-8">
-    <title>Список задач</title>
+    <title>Текстовый редактор</title>
 
     <link rel="stylesheet" href="styles/styles.css">
 
@@ -10,21 +10,17 @@
   </head>
 
   <body>
-    <h1 class="title">Список задач</h1>
+    <h1 class="title">Текстовый редактор</h1>
 
-    <div class="container-fixed">
+    <div class="fixed-container">
       <div class="container">
-        <ol class="container__list list">
-          <li class="list__item">Задача 1</li>
-          <li class="list__item">Задача 2</li>
-          <li class="list__item">Задача 3</li>
-        </ol>
+        <p class="container__text" contenteditable="false">text</p>
 
-        <form action="#" class="container__form form">
-          <input class="form__iput" type="text" name="text">
-
-          <button class="form__btn">Добавить</button>
-        </form>
+        <div class="container__btn container-btn">
+          <button class="container-btn__edit">Редактировать</button>
+          <button class="container-btn__save" disabled>Сохранить</button>
+          <button class="container-btn__cansel" disabled>Отменить</button>
+        </div>
       </div>
     </div>
   </body>

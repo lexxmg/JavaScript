@@ -1,21 +1,9 @@
 'use strict';
 
-const container = document.body.querySelector('.container'),
-      list = container.querySelector('.container__list'),
-      form = container.querySelector('.container__form');
+const text = document.querySelector('.container__text'),
+      btnEdit = document.querySelector('.container-btn__edit');
 
-list.addEventListener('click', event => {
-  if ( event.target.classList.contains('list__item') ) {
-    event.target.classList.toggle('list__item--done');
-  }
-});
 
-form.addEventListener('submit', event => {
-  event.preventDefault();
-  if (form.text.value === '') {
-    alert('Поле ввода должно быть заполнено!');
-  } else {
-    list.insertAdjacentHTML('beforeend', `<li class="list__item">${form.text.value}</li>`);
-    form.text.value = '';
-  }
+btnEdit.addEventListener('click', () => {
+  text.setAttribute('contenteditable', 'true');
 });
