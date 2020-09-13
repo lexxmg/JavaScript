@@ -67,19 +67,26 @@ btnCansel.addEventListener('click', () => {
 btnDelete.addEventListener('click', () => {
   localStorage.removeItem(select.value);
 
-  select.innerHTML = '';
+  if (localStorage.length > 0) {
+    select.innerHTML = '';
 
-  for (let i = 0; i < localStorage.length; i++) {
-    let elOption = document.createElement('option');
-    elOption.innerHTML = localStorage.key(i);
-    select.append(elOption);
+    for (let i = 0; i < localStorage.length; i++) {
+      let elOption = document.createElement('option');
+      elOption.innerHTML = localStorage.key(i);
+      select.append(elOption);
+    }
+
+    btnEnabled(select);
+
+    textPade.innerHTML = localStorage.getItem(select.value);
+  } else {
+    textPade.innerHTML = 'Этот текст можно редактировать.';
+    select.innerHTML = '';
   }
 
-  textPade.innerHTML = localStorage.getItem(select.value);
-
   btnDisabled(btnSave, btnCansel, btnDelete);
-  btnEnabled(select, btnEdit);
-  
+  btnEnabled(btnEdit);
+
   textPade.setAttribute('contenteditable', 'false');
 });
 
