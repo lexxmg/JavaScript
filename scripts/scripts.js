@@ -72,5 +72,22 @@ btnCansel.addEventListener('click', () => {
 });
 
 btnDelete.addEventListener('click', () => {
+  localStorage.removeItem(select.value);
 
+  select.innerHTML = '';
+
+  for (let i = 0; i < localStorage.length; i++) {
+    let elOption = document.createElement('option');
+    elOption.innerHTML = localStorage.key(i);
+    select.append(elOption);
+  }
+
+  textPade.innerHTML = localStorage.getItem(select.value);
+
+  select.removeAttribute('disabled');
+  btnSave.setAttribute('disabled', 'disabled');
+  btnCansel.setAttribute('disabled', 'disabled');
+  btnDelete.setAttribute('disabled', 'disabled');
+  btnEdit.removeAttribute('disabled');
+  textPade.setAttribute('contenteditable', 'false');
 });
