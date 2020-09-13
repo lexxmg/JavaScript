@@ -26,7 +26,7 @@ select.addEventListener('change', () => {
 });
 
 btnEdit.addEventListener('click', () => {
-  textStr = localStorage.getItem(select.value);
+  textStr = textPade.innerHTML;
   textPade.setAttribute('contenteditable', 'true');
 
   btnEnabled(btnSave, btnCansel, btnDelete);
