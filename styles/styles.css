@@ -17,7 +17,7 @@
 }
 
 .container__text {
-  min-height: 1em;
+  min-height: 400px;
 
   padding: 10px;
 
@@ -42,5 +42,13 @@
 }
 
 .container-btn__cansel {
+  margin-left: 20px;
+}
+
+.container-btn__delete {
+
+}
+
+.container__select {
 
 }
