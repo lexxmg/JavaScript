@@ -27,23 +27,16 @@ select.addEventListener('change', () => {
 
 btnEdit.addEventListener('click', () => {
   textStr = localStorage.getItem(select.value);
-  select.setAttribute('disabled', 'disabled');
-
   textPade.setAttribute('contenteditable', 'true');
-  btnEdit.setAttribute('disabled', 'disabled');
-  btnSave.removeAttribute('disabled');
-  btnCansel.removeAttribute('disabled');
-  btnDelete.removeAttribute('disabled');
+
+  btnEnabled(btnSave, btnCansel, btnDelete);
+  btnDisabled(select, btnEdit);
 });
 
 btnSave.addEventListener('click', () => {
   const date = new Date();
   const textSave = textPade.innerHTML;
 
-  btnSave.setAttribute('disabled', 'disabled');
-  btnCansel.setAttribute('disabled', 'disabled');
-  btnDelete.setAttribute('disabled', 'disabled');
-  btnEdit.removeAttribute('disabled');
   textPade.setAttribute('contenteditable', 'false');
 
   localStorage.setItem(date, textSave);
@@ -56,19 +49,19 @@ btnSave.addEventListener('click', () => {
     select.append(elOption);
   }
 
-  select.removeAttribute('disabled');
+  btnDisabled(btnSave, btnCansel, btnDelete);
+  btnEnabled(select, btnEdit);
+
   select.value = date;
 });
 
 btnCansel.addEventListener('click', () => {
   textPade.innerHTML = textStr;
-  select.removeAttribute('disabled');
-
-  btnSave.setAttribute('disabled', 'disabled');
-  btnCansel.setAttribute('disabled', 'disabled');
-  btnDelete.setAttribute('disabled', 'disabled');
-  btnEdit.removeAttribute('disabled');
   textPade.setAttribute('contenteditable', 'false');
+
+  btnDisabled(btnSave, btnCansel, btnDelete);
+  btnEnabled(select, btnEdit);
+
 });
 
 btnDelete.addEventListener('click', () => {
@@ -84,10 +77,20 @@ btnDelete.addEventListener('click', () => {
 
   textPade.innerHTML = localStorage.getItem(select.value);
 
-  select.removeAttribute('disabled');
-  btnSave.setAttribute('disabled', 'disabled');
-  btnCansel.setAttribute('disabled', 'disabled');
-  btnDelete.setAttribute('disabled', 'disabled');
-  btnEdit.removeAttribute('disabled');
+  btnDisabled(btnSave, btnCansel, btnDelete);
+  btnEnabled(select, btnEdit);
+  
   textPade.setAttribute('contenteditable', 'false');
 });
+
+function btnDisabled() {
+  for (let obj of arguments) {
+    obj.setAttribute('disabled', 'disabled');
+  }
+}
+
+function btnEnabled() {
+  for (let obj of arguments) {
+    obj.removeAttribute('disabled');
+  }
+}
