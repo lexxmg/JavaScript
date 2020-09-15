@@ -5,7 +5,7 @@ const textPade = document.querySelector('.container__text'),
       btnSave = document.querySelector('.container-btn__save'),
       btnCansel = document.querySelector('.container-btn__cansel'),
       btnDelete = document.querySelector('.container-btn__delete'),
-      select = document.querySelector('.container__select');
+      select = document.querySelector('.select__select');
 
 let textStr;
 const data = new LocalData();

@@ -1,0 +1,52 @@
+.container-btn__select {
+  margin-left: 20px;
+}
+
+.select {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 300px;
+  height: 30px;
+
+  border: 1px solid black;
+}
+
+.select::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 8px;
+
+  display: block;
+
+  width: 0;
+  height: 0;
+
+  border-style: solid;
+  border-width: 10px 5px 0 5px;
+  border-color: #000 transparent transparent transparent;
+
+  pointer-events: none;
+}
+
+.select__select {
+  display: block;
+
+  width: 100%;
+
+  padding: 0 10px 0 5px;
+
+  border: none;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  cursor: pointer;
+}
+
+.select__select:focus {
+  outline: none;
+}

@@ -5,6 +5,8 @@
     <title>Текстовый редактор</title>
 
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/select.css">
 
     <script src="scripts/scripts.js" defer></script>
   </head>
@@ -17,12 +19,14 @@
         <p class="container__text" contenteditable="false">Этот текст можно редактировать.</p>
 
         <div class="container__btn container-btn">
-          <button class="container-btn__edit">Редактировать</button>
-          <button class="container-btn__save" disabled>Сохранить</button>
-          <button class="container-btn__cansel" disabled>Отменить</button>
-          <button class="container-btn__delete" disabled>удалить</button>
+          <button class="container-btn__edit btn">Редактировать</button>
+          <button class="container-btn__save btn" disabled>Сохранить</button>
+          <button class="container-btn__cansel btn" disabled>Отменить</button>
+          <button class="container-btn__delete btn" disabled>удалить</button>
 
-          <select class="container__select" disabled></select>
+          <div class="container-btn__select select">
+            <select class="select__select" disabled></select>
+          </div>
         </div>
       </div>
     </div>

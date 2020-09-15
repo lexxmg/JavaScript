@@ -38,7 +38,7 @@
 }
 
 .container-btn__save {
-
+  margin-left: 5px;
 }
 
 .container-btn__cansel {
@@ -46,9 +46,5 @@
 }
 
 .container-btn__delete {
-
-}
-
-.container__select {
-
+  margin-left: 5px;
 }
