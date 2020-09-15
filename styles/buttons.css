@@ -19,7 +19,7 @@
   transition: color .15s, background-color .15s;
 }
 
-.btn:hover {
+.btn:hover:not(.btn[disabled]) {
   background-color: transparent;
 
   color: blue;
@@ -36,5 +36,7 @@
 .btn[disabled] {
   opacity: .3;
 
-  pointer-events: none;
+  /* pointer-events: none; */
+
+  cursor: not-allowed;
 }

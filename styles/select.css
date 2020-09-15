@@ -51,7 +51,8 @@
 .select__select[disabled] {
   opacity: .4;
 
-  pointer-events: none;
+  /* pointer-events: none; */
+  cursor: not-allowed;
 }
 
 .select__select[disabled] + .select__arrow {
