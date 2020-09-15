@@ -1,5 +1,5 @@
 .container-btn__select {
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .select {
@@ -8,16 +8,16 @@
   display: flex;
   align-items: center;
 
-  width: 300px;
-  height: 30px;
+  /* width: 400px;
+  height: 40px;
 
-  border: 1px solid black;
+  border: 1px solid black; */
 }
 
 .select::after {
   content: "";
   position: absolute;
-  top: 10px;
+  top: 15px;
   right: 8px;
 
   display: block;
@@ -35,18 +35,27 @@
 .select__select {
   display: block;
 
-  width: 100%;
+  width: 400px;
+  height: 40px;
 
-  padding: 0 10px 0 5px;
+  padding: 5px 18px 5px 5px;
 
-  border: none;
+  background: none;
+
+  border-width: 1px;
+  border-color: blue;
+  border-radius: 0;
 
   appearance: none;
   -webkit-appearance: none;
 
+  font-size: 16px;
+
   cursor: pointer;
 }
 
-.select__select:focus {
-  outline: none;
+.select__select[disabled] {
+  opacity: .4;
+
+  pointer-events: none;
 }

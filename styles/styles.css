@@ -13,7 +13,7 @@
 }
 
 .container {
-
+  font-size: 20px;
 }
 
 .container__text {
@@ -27,6 +27,7 @@
 .container__btn {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .container-btn {
@@ -34,7 +35,7 @@
 }
 
 .container-btn__edit {
-
+  margin-right: 20px;
 }
 
 .container-btn__save {
@@ -42,7 +43,7 @@
 }
 
 .container-btn__cansel {
-  margin-left: 20px;
+  margin-left: 5px;
 }
 
 .container-btn__delete {

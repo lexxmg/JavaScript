@@ -1,6 +1,40 @@
 .btn {
   display: block;
 
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 40px;
+
+  padding: 0;
+
+  background-color: blue;
+
+  border: 1px solid blue;
+
+  font-size: 16px;
+
+  color: white;
+
+  cursor: pointer;
+
+  transition: color .15s, background-color .15s;
+}
+
+.btn:hover {
+  background-color: transparent;
+
+  color: blue;
+}
+
+.btn:focus {
+  outline: none;
+
+  background-color: transparent;
+
+  color: blue;
+}
+
+.btn[disabled] {
+  opacity: .3;
+
+  pointer-events: none;
 }
