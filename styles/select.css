@@ -7,15 +7,9 @@
 
   display: flex;
   align-items: center;
-
-  /* width: 400px;
-  height: 40px;
-
-  border: 1px solid black; */
 }
 
-.select::after {
-  content: "";
+.select__arrow {
   position: absolute;
   top: 15px;
   right: 8px;
@@ -58,4 +52,8 @@
   opacity: .4;
 
   pointer-events: none;
+}
+
+.select__select[disabled] + .select__arrow {
+  display: none;
 }
