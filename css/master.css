@@ -34,7 +34,7 @@ body {
   min-height: 200px;
 
   margin: 50px auto 0;
-  padding: 5px 0 0 0;
+  padding: 5px;
 
   background-color: white;
 }
@@ -46,5 +46,5 @@ body {
 }
 
 .main__btn {
-  margin: 0 auto;
+  margin: 5px auto 0;
 }
