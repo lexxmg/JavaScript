@@ -31,10 +31,22 @@ function xhr(url) {
     const request = new XMLHttpRequest();
 
     request.addEventListener('load', () => {
-      resolve(request.responseText);
+      if (request.status >= 400) {
+        reject(request.status);
+      } else {
+        resolve(request.responseText);
+      }  
     });
 
     request.open('GET', url);
     request.send();
+  });
+}
+
+const sleep = function() {
+  return new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      resolve();
+    }, 2000);
   });
 }
