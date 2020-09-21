@@ -15,11 +15,26 @@ btn.addEventListener('click', () => {
   request.send();
 });
 
-btnFetch.onclick = () => {
-  fetch('/data.txt').then(res => res.text())
-    .then(data => console.log(data))
-    .catch(err => {
-      console.log('err');
-      console.log(err.text());
+btnFetch.onclick = async () => {
+  const res = await fetch('/data.txt');
+
+  if (res.ok) {
+    const text = await res.text();
+    console.log(text);
+  } else {
+    console.log(res.status);
+  }
+}
+
+function xhr(url) {
+  return new Promise( (resolve, reject) => {
+    const request = new XMLHttpRequest();
+
+    request.addEventListener('load', () => {
+      resolve(request.responseText);
     });
+
+    request.open('GET', url);
+    request.send();
+  });
 }
