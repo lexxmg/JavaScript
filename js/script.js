@@ -1,19 +1,67 @@
 'use strict';
+
+const formSearch = document.querySelector('.search_form'),
+      inputSearch = document.querySelector('#person_search_input'),
+      btn = document.querySelector('#search_request_btn'),
+      result = document.querySelector('.search_result');
+
+let json;
+
 // Сохраняем адрес API
 var api = "https://swapi.dev/api/";
 
 // Формируем полный адрес запроса:
 var url = api + "people/?search="; // добавляем к запросу тип необходимых данных подробно о формате https://swapi.dev/documentation
-url += "obi"; // значение переменной запроса search
+//url += "obi"; // значение переменной запроса search
 
-getRequest(url, (res) => {
-  console.log(JSON.parse(res).results[0].name);
-}, (err) => {
-  alert(
-    "Произошла ошибка при получении ответа от сервера:\n\n" +
-      JSON.parse(err).message
-  );
+btn.addEventListener('click', () => {
+  const search = inputSearch.value;
+  url += search;
+
+  getRequest(url, (res) => {
+    json = JSON.parse(res)
+
+    if (json.count === 0) {
+      alert("К сожалению, данные не получены по запросу: " + url);
+      return;
+    }
+
+    alert("Найдено персонажей:" + json.count);
+
+    for (let obj of json.results) {
+      const li = document.createElement('li');
+      li.innerHTML = obj.name;
+
+      result.append(li);
+    }
+
+
+    console.log(json.results);
+    //console.log(json.results[0].name);
+  }, (err) => {
+    alert(
+      "Произошла ошибка при получении ответа от сервера:\n\n" +
+        JSON.parse(err).message
+    );
+  });
 });
+
+result.addEventListener('click', event => {
+  const target = event.target;
+
+  if (target.tagName === 'LI') {
+    for (let obj of json.results) {
+      if (obj.name === target.innerHTML) {
+        pers_name.innerHTML = obj.name;
+        height.innerHTML = obj.height;
+        mass.innerHTML = obj.mass;
+        birth_year.innerHTML = obj.birth_year;
+        films_count.innerHTML = obj.films.length;
+      }
+    }
+  }
+});
+
 
 /*
   // Таким образом формируется строка вида:
