@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en" >
   <head>
-    <meta charset="utf-8">
-    <title>AJAX</title>
+    <meta charset="UTF-8">
+    <title>CodePen - SWAPI JS M11</title>
 
-    <link rel="stylesheet" href="css/master.css">
-    <link rel="stylesheet" href="css/btn.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <script src="js/scripts.js" defer></script>
+    <script  src="js/script.js" defer></script>
   </head>
-
+  
   <body>
-    <main class="main">
-      <h1 class="main__title">AJAX</h1>
+  <!-- partial:index.partial.html -->
+    <div class="content">
 
-      <div class="main__content">
-        <p class="main__text">Здесь будит текст ...</p>
-
-        <button class="main__btn btn">Загруить</button>
-        <button class="main__btn btn btn-fetch-js">fetch</button>
+      <div class="search">
+        <div class="search_form"><label>Поиск персонажа: <input type="text" class="person_search" id="person_search_input"> </label>
+          <button id="search_request_btn" class="button">Найти</button></div>
+        <ul class="search_result">
+        </ul>
       </div>
-    </main>
+
+      <div class="person_data">
+        <div>Имя: <span id="name"></div>
+        <div>Рост: <span id="height"></div>
+        <div>Вес: <span id="mass"></div>
+        <div>Год рождения: <span id="birth_year"></div>
+        <div>В скольки фильмах появлялся: <span id="films_count"></div>
+      </div>
+    </div
   </body>
 </html>
