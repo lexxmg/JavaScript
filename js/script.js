@@ -10,16 +10,12 @@ let json;
 // Сохраняем адрес API
 var api = "https://swapi.dev/api/";
 
-// Формируем полный адрес запроса:
-var url = api + "people/?search="; // добавляем к запросу тип необходимых данных подробно о формате https://swapi.dev/documentation
-//url += "obi"; // значение переменной запроса search
-
 btn.addEventListener('click', () => {
   const search = inputSearch.value;
-  url += search;
+  const url = api + "people/?search=" + search;
 
   getRequest(url, (res) => {
-    json = JSON.parse(res)
+    json = JSON.parse(res);
 
     if (json.count === 0) {
       alert("К сожалению, данные не получены по запросу: " + url);
@@ -28,6 +24,8 @@ btn.addEventListener('click', () => {
 
     alert("Найдено персонажей:" + json.count);
 
+    result.innerHTML = '';
+
     for (let obj of json.results) {
       const li = document.createElement('li');
       li.innerHTML = obj.name;
@@ -35,9 +33,6 @@ btn.addEventListener('click', () => {
       result.append(li);
     }
 
-
-    console.log(json.results);
-    //console.log(json.results[0].name);
   }, (err) => {
     alert(
       "Произошла ошибка при получении ответа от сервера:\n\n" +
