@@ -57,60 +57,48 @@ result.addEventListener('click', event => {
   }
 });
 
+let timerId = 0;
 
-/*
-  // Таким образом формируется строка вида:
-  // https://swapi.dev/api/people/?search=obi
+inputSearch.addEventListener('input', () => {
+  const search = inputSearch.value;
+  const url = api + "people/?search=" + search;
 
-  // Создаем объект XMLHttpRequest, при помощи которого будем отправлять запрос
-  var request = new XMLHttpRequest();
+  if (timerId) {
+    clearTimeout(timerId);
+  }
 
-  // Назначаем обработчик события load для запроса
-  request.addEventListener("load", function () {
-    // отображаем в консоли текст ответа сервера
-    console.log(request.response);
+  function foo() {
+    getRequest(url, (res) => {
+      json = JSON.parse(res);
 
-    // парсим его из JSON-строки в JavaScript-объект
-    var response = JSON.parse(request.response);
+      if (json.count > 0) {
+        console.log('_________________');
+        for (let obj of json.results) {
+          console.log(obj.name);
+        }
+      }
 
-    // Проверяем статус-код, который прислал сервер
-    // 200 — это ОК, остальные — ошибка или не подходят
-    if (request.status !== 200) {
-      alert(
-        "Произошла ошибка при получении ответа от сервера:\n\n" +
-          response.message
-      );
+    }, (err) => {
+
+    });
+  }
+
+  timerId = setTimeout(foo, 500);
+});
+
+
+function getRequest(url, callback, err) {
+  const xhr = new XMLHttpRequest();
+
+  xhr.addEventListener('load', () => {
+    if (xhr.status === 200) {
+      callback(xhr.response);
+    } else {
+      err(xhr.response);
       return;
     }
-
-    // Проверяем, если поле имя в ответе на запрос
-    if (response.count == 0) {
-      alert("К сожалению, данные не получены по запросу: " + url);
-      return;
-    }
-
-    // Если все в порядке, то отображаем количество результатов поиска
-    alert("Найдено персонажей:" + response.count);
-
   });
 
-  // Обработчик готов, можно отправлять запрос
-  // Открываем соединение и отправляем
-  request.open("get", url);
-  request.send();
-*/
-  function getRequest(url, callback, err) {
-    const xhr = new XMLHttpRequest();
-
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        callback(xhr.response);
-      } else {
-        err(xhr.response);
-        return;
-      }
-    });
-
-    xhr.open("get", url);
-    xhr.send();
-  }
+  xhr.open("get", url);
+  xhr.send();
+}
