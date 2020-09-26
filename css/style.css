@@ -65,7 +65,7 @@ input[type=text] {
   z-index: 100;
 
   display: block;
-  
+
   margin: 0;
   padding: 5px 7px;
 
@@ -74,4 +74,8 @@ input[type=text] {
   list-style-type: none;
 
   color: black;
+}
+
+.live-search li:hover {
+  color: white;
 }
