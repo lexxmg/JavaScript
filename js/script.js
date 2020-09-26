@@ -64,25 +64,31 @@ inputSearch.addEventListener('input', () => {
   const search = inputSearch.value;
   const url = api + "people/?search=" + search;
 
+  if (search === '') {
+    if ( document.querySelector('.live-search') ) {
+      document.querySelector('.live-search').remove();
+    }
+  }
+
   if (timerId) {
     clearTimeout(timerId);
   }
 
   function foo() {
-    if ( document.querySelector('.live-search') ) {
-      document.querySelector('.live-search').remove();
-    }
-
-    const ul = document.createElement('ul');
-    ul.classList.add('live-search');
-    ul.style.top = (coordSearch.bottom + pageYOffset + 3) + 'px';
-    ul.style.left = (coordSearch.left + pageXOffset) + 'px';
-    document.body.prepend(ul);
-
     getRequest(url, (res) => {
       json = JSON.parse(res);
 
-      if (json.count > 0 && inputSearch.value !== '') {
+      if (json.count > 0 && search !== '') {
+        if ( document.querySelector('.live-search') ) {
+          document.querySelector('.live-search').remove();
+        }
+
+        const ul = document.createElement('ul');
+        ul.classList.add('live-search');
+        ul.style.top = (coordSearch.bottom + pageYOffset + 3) + 'px';
+        ul.style.left = (coordSearch.left + pageXOffset) + 'px';
+        document.body.prepend(ul);
+
         for (let obj of json.results) {
           const li = document.createElement('li');
           li.innerHTML = obj.name;
@@ -95,7 +101,9 @@ inputSearch.addEventListener('input', () => {
           ul.append(li);
         }
       } else {
-        ul.remove();
+        if ( document.querySelector('.live-search') ) {
+          document.querySelector('.live-search').remove();
+        }
       }
 
     }, (err) => {
