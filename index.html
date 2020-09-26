@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/btn.css">
+    <link rel="stylesheet" href="css/radio-input.css">
 
     <script src="js/scripts.js" defer></script>
   </head>
@@ -21,19 +22,29 @@
                 <input class="form__input" type="text" name="search">
               </label>
 
-              <fieldset class="form__fieldset">
-                <label class="form__label">
-                  <input class="form__input" type="radio" name="select" value="" checked>
+              <div class="form__row">
+                <label class="form__label label-radio">Человек:
+                  <input class="label-radio__input visually-hidden"
+                         type="radio" name="select"
+                         value="people"
+                         checked>
+                  <span class="label-radio__radio"></span>
                 </label>
 
-                <label class="form__label">
-                  <input class="form__input" type="radio" name="select" value="">
+                <label class="form__label label-radio">Корабль:
+                  <input class="label-radio__input visually-hidden"
+                         type="radio" name="select"
+                         value="starships">
+                  <span class="label-radio__radio"></span>
                 </label>
 
-                <label class="form__label">
-                  <input class="form__input" type="radio" name="select" value="">
+                <label class="form__label label-radio">Планета:
+                  <input class="label-radio__input visually-hidden"
+                         type="radio" name="select"
+                         value="planets">
+                  <span class="label-radio__radio"></span>
                 </label>
-              </fieldset>
+              </div>
 
               <button class="form__btn btn">Найти</button>
             </form>
@@ -42,31 +53,23 @@
           <div class="container_result result">
             <ul class="result__list list">
               <li class="list__item">Имя:
-                <span class="list__text"></span>
+                <span class="list__text js-name"></span>
               </li>
-            </ul>
 
-            <ul class="result__list list">
               <li class="list__item">Рост:
-                <span class="list__text"></span>
+                <span class="list__text js-height"></span>
               </li>
-            </ul>
 
-            <ul class="result__list list">
               <li class="list__item">Вес:
-                <span class="list__text"></span>
+                <span class="list__text js-mass"></span>
               </li>
-            </ul>
 
-            <ul class="result__list list">
               <li class="list__item">Год рождения:
-                <span class="list__text"></span>
+                <span class="list__text js-birth_year"></span>
               </li>
-            </ul>
 
-            <ul class="result__list list">
               <li class="list__item">В скольки фильмах появлялся:
-                <span class="list__text"></span>
+                <span class="list__text js-film_count"></span>
               </li>
             </ul>
           </div>

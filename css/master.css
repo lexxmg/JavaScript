@@ -17,12 +17,12 @@ body {
   min-width: 320px;               /* box-model */
   margin: 0;
 
-  background-color: #f9f9f9;       /* Визаулизация */
+  background-color: black;       /* Визаулизация */
 
   font-family: Аrial, sans-serif;  /* Типография */
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.429;
-  color: black;
+  color: #FFE81F;
 }
 
 button {
