@@ -5,6 +5,7 @@
     <title>AJAX</title>
 
     <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/btn.css">
 
     <script src="js/scripts.js" defer></script>
@@ -12,13 +13,64 @@
 
   <body>
     <main class="main">
-      <h1 class="main__title">AJAX</h1>
+      <div class="fixed-container">
+        <div class="container">
+          <div class="container__search search">
+            <form class="search__form form">
+              <label class="form__label">Поиск персонажа:
+                <input class="form__input" type="text" name="search">
+              </label>
 
-      <div class="main__content">
-        <p class="main__text">Здесь будит текст ...</p>
+              <fieldset class="form__fieldset">
+                <label class="form__label">
+                  <input class="form__input" type="radio" name="select" value="" checked>
+                </label>
 
-        <button class="main__btn btn">Загруить</button>
-        <button class="main__btn btn btn-fetch-js">fetch</button>
+                <label class="form__label">
+                  <input class="form__input" type="radio" name="select" value="">
+                </label>
+
+                <label class="form__label">
+                  <input class="form__input" type="radio" name="select" value="">
+                </label>
+              </fieldset>
+
+              <button class="form__btn btn">Найти</button>
+            </form>
+          </div>
+
+          <div class="container_result result">
+            <ul class="result__list list">
+              <li class="list__item">Имя:
+                <span class="list__text"></span>
+              </li>
+            </ul>
+
+            <ul class="result__list list">
+              <li class="list__item">Рост:
+                <span class="list__text"></span>
+              </li>
+            </ul>
+
+            <ul class="result__list list">
+              <li class="list__item">Вес:
+                <span class="list__text"></span>
+              </li>
+            </ul>
+
+            <ul class="result__list list">
+              <li class="list__item">Год рождения:
+                <span class="list__text"></span>
+              </li>
+            </ul>
+
+            <ul class="result__list list">
+              <li class="list__item">В скольки фильмах появлялся:
+                <span class="list__text"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </main>
   </body>
