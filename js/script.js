@@ -60,6 +60,7 @@ result.addEventListener('click', event => {
 let timerId = 0;
 
 inputSearch.addEventListener('input', () => {
+  const coordSearch = inputSearch.getBoundingClientRect();
   const search = inputSearch.value;
   const url = api + "people/?search=" + search;
 
@@ -68,14 +69,33 @@ inputSearch.addEventListener('input', () => {
   }
 
   function foo() {
+    if ( document.querySelector('.live-search') ) {
+      document.querySelector('.live-search').remove();
+    }
+
+    const ul = document.createElement('ul');
+    ul.classList.add('live-search');
+    ul.style.top = (coordSearch.bottom + pageYOffset + 3) + 'px';
+    ul.style.left = (coordSearch.left + pageXOffset) + 'px';
+    document.body.prepend(ul);
+
     getRequest(url, (res) => {
       json = JSON.parse(res);
 
       if (json.count > 0) {
-        console.log('_________________');
         for (let obj of json.results) {
-          console.log(obj.name);
+          const li = document.createElement('li');
+          li.innerHTML = obj.name;
+
+          li.addEventListener('click', () => {
+            inputSearch.value = li.innerHTML;
+            ul.remove();
+          });
+
+          ul.append(li);
         }
+      } else {
+        ul.remove();
       }
 
     }, (err) => {
