@@ -82,7 +82,7 @@ inputSearch.addEventListener('input', () => {
     getRequest(url, (res) => {
       json = JSON.parse(res);
 
-      if (json.count > 0) {
+      if (json.count > 0 && inputSearch.value !== '') {
         for (let obj of json.results) {
           const li = document.createElement('li');
           li.innerHTML = obj.name;
