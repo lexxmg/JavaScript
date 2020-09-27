@@ -15,10 +15,12 @@ form.addEventListener('submit', (event) => {
 
   fetch(url)
     .then( (res) => {
-      console.log(res.ok);
-      return res;
+      if (res.ok) {
+        return res.json();
+      } else {
+        alert('ошибка сервера' + res);
+      }
     })
-    .then( (res) => res.json() )
     .then( (result) => {
       console.log(result);
     })
