@@ -6,3 +6,19 @@ const form = document.querySelector('.search__form'),
       persMass = document.querySelector('.js-mass'),
       persBirthYear = document.querySelector('.js-birth_year'),
       persFilmCount = document.querySelector('.js-film_count');
+
+const api = 'https://swapi.dev/api/';
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  let url = api + form.select.value + '/?search=' + form.search.value;
+  console.log(url);
+
+  fetch('url')
+    .then( (res) => {
+      return res;
+    })
+    .then( (result) => {
+      console.log(result);
+    });
+});
