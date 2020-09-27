@@ -12,13 +12,17 @@ const api = 'https://swapi.dev/api/';
 form.addEventListener('submit', (event) => {
   event.preventDefault();
   let url = api + form.select.value + '/?search=' + form.search.value;
-  console.log(url);
 
-  fetch('url')
+  fetch(url)
     .then( (res) => {
+      console.log(res.ok);
       return res;
     })
+    .then( (res) => res.json() )
     .then( (result) => {
       console.log(result);
+    })
+    .catch( (err) => {
+      console.log(err);
     });
 });
