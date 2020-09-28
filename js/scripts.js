@@ -18,13 +18,36 @@ form.addEventListener('submit', (event) => {
       if (res.ok) {
         return res.json();
       } else {
-        alert('ошибка сервера' + res);
+        popup('Что то пошло не так, повторите попытку позже.');
       }
     })
     .then( (result) => {
-      console.log(result);
+      if (result.count > 0) {
+        console.log(result.results[0].mass);
+      } else {
+        popup('По вашему запросу ничего не райдено.');
+      }
     })
     .catch( (err) => {
       console.log(err);
     });
 });
+
+
+function popup(text) {
+  const popup = document.querySelector('.popup-container');
+  const popupText = document.querySelector('.popup-container__text');
+
+  popupText.innerHTML = text;
+  popup.classList.remove('hidden');
+
+  popup.addEventListener('click', event => {
+    if (!event.target.classList.contains('popup-container__popup')) {
+      popup.classList.add('hidden');
+    }
+  });
+
+  setTimeout(() => {
+    popup.classList.add('hidden');
+  }, 5000);
+}
