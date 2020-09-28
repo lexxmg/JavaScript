@@ -20,6 +20,14 @@
 
 }
 
+.form__container-input {
+
+}
+
+.container-input {
+  position: relative;
+}
+
 .form__label {
   margin-right: 10px;
 }
@@ -42,6 +50,14 @@
   outline: 1px #FFE81F solid;
 
   outline-offset: 1px;
+}
+
+.container-input__list {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+
+  z-index: 50;
 }
 
 .form__row {
