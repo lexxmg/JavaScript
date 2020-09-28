@@ -63,3 +63,27 @@ function popup(text) {
     document.body.classList = '';
   }, 5000);
 }
+
+function liveSearch() {
+  let url = api + form.select.value + '/?search=' + form.search.value;
+
+  fetch(url).then( res => {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return
+    }
+  })
+  .then(res => {
+    if (res.count > 0) {
+      return res.results;
+    } else {
+      return
+    }
+  })
+  .then(result => {
+    for (let obj of result) {
+      console.log(obj.name);
+    }
+  });
+}
