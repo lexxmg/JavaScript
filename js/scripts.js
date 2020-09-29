@@ -82,7 +82,9 @@ function liveSearch() {
     if (res.count > 0 && input.value) {
       return res.results;
     } else {
-      document.querySelector('.live-list').remove();
+      if (document.querySelector('.live-list')) {
+        document.querySelector('.live-list').remove();
+      }
       throw res.count;
     }
   })
