@@ -35,7 +35,7 @@ function xhr(url) {
         reject(request.status);
       } else {
         resolve(request.responseText);
-      }  
+      }
     });
 
     request.open('GET', url);
@@ -49,4 +49,19 @@ const sleep = function() {
       resolve();
     }, 2000);
   });
+}
+
+function timer() {
+  let timerId = 0;
+
+  return t => {
+    return new Promise(function(resolve, reject) {
+      if (timerId > 0) {
+        clearTimeout(timerId);
+      }
+        timerId = setTimeout( () => {
+        resolve();
+      }, t);
+    });
+  }
 }
