@@ -1,6 +1,7 @@
 'use strict';
 
-const form = document.querySelector('.search__form');
+const form = document.querySelector('.search__form'),
+      input = document.querySelector('.form__input');
 
 const api = 'https://swapi.dev/api/';
 
@@ -14,11 +15,13 @@ form.addEventListener('submit', (event) => {
         return res.json();
       } else {
         popup('Что то пошло не так, повторите попытку позже.');
+        throw res.status;
       }
     })
     .then( (result) => {
       if (result.count > 0) {
         persData(result.results[0]);
+        input.value = '';
       } else {
         popup('По вашему запросу ничего не райдено.');
       }
@@ -28,6 +31,7 @@ form.addEventListener('submit', (event) => {
     });
 });
 
+input.addEventListener('input' ,liveSearch);
 
 function persData(obj) {
   const persName = document.querySelector('.js-name'),
@@ -71,19 +75,45 @@ function liveSearch() {
     if (res.ok) {
       return res.json();
     } else {
-      return
+      throw res.status;
     }
   })
   .then(res => {
-    if (res.count > 0) {
+    if (res.count > 0 && input.value) {
       return res.results;
     } else {
-      return
+      document.querySelector('.live-list').remove();
+      throw res.count;
     }
   })
   .then(result => {
+    const list = addLiveList(input);
+    list.addEventListener('click', event => {
+      if (event.target.tagName === 'LI') {
+        input.value = event.target.innerHTML;
+        document.querySelector('.live-list').remove();
+      }
+    });
     for (let obj of result) {
-      console.log(obj.name);
+      list.insertAdjacentHTML('afterbegin', `<li>${obj.name}</li>`);
     }
-  });
+  })
+  .catch(err => console.log(' ошибка, ' + err));
+}
+
+function addLiveList(input) {
+  const coords = input.getBoundingClientRect();
+
+  if (document.querySelector('.live-list')) {
+    document.querySelector('.live-list').remove();
+  }
+
+  const ul = document.createElement('ul');
+
+  ul.classList.add('live-list');
+  ul.style.top = (coords.bottom + pageYOffset + 3) + 'px';
+  ul.style.left = (coords.left + pageXOffset) + 'px';
+  document.body.append(ul);
+
+  return ul;
 }
