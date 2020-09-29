@@ -3,7 +3,8 @@
 const form = document.querySelector('.search__form'),
       input = document.querySelector('.form__input');
 
-let timerId = 0;
+const timerPopupClose = timer();
+const pauseRequest = timer();
 const api = 'https://swapi.dev/api/';
 
 form.addEventListener('submit', (event) => {
@@ -49,9 +50,6 @@ function persData(obj) {
 }
 
 function popup(text) {
-  if (timerId > 0) {
-    clearTimeout(timerId);
-  }
   const popup = document.querySelector('.popup-container');
   const popupText = document.querySelector('.popup-container__text');
   document.body.classList = 'off-scroll';
@@ -63,20 +61,17 @@ function popup(text) {
     if (!event.target.classList.contains('popup-container__popup')) {
       popup.classList.add('hidden');
       document.body.classList = '';
+      timerPopupClose(0);
     }
   });
 
-  timerId = setTimeout(() => {
+  timerPopupClose(5000).then( () => {
     popup.classList.add('hidden');
     document.body.classList = '';
-  }, 5000);
+  });
 }
 
 function liveSearch() {
-  if (timerId > 0) {
-    clearTimeout(timerId);
-  }
-
   if (input.value === '') {
     if (document.querySelector('.live-list')) {
       document.querySelector('.live-list').remove();
@@ -85,7 +80,7 @@ function liveSearch() {
 
   let url = api + form.select.value + '/?search=' + form.search.value;
 
-  timerId = setTimeout( () => {
+  pauseRequest(300).then( () => {
     fetch(url).then( res => {
       if (res.ok) {
         return res.json();
@@ -116,7 +111,7 @@ function liveSearch() {
       }
     })
     .catch(err => console.log(' ошибка, ' + err));
-  }, 200);
+  });
 }
 
 function addLiveList(input) {
@@ -134,4 +129,25 @@ function addLiveList(input) {
   document.body.append(ul);
 
   return ul;
+}
+
+function timer() {
+  let timerId = 0;
+
+  return t => {
+    if (t === 0) {
+      if (timerId > 0) {
+        clearTimeout(timerId);
+      }
+    } else {
+      return new Promise(function(resolve, reject) {
+        if (timerId > 0) {
+          clearTimeout(timerId);
+        }
+          timerId = setTimeout( () => {
+          resolve();
+        }, t);
+      });
+    }
+  }
 }
