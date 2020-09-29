@@ -3,6 +3,7 @@
 const form = document.querySelector('.search__form'),
       input = document.querySelector('.form__input');
 
+let timerId = 0;
 const api = 'https://swapi.dev/api/';
 
 form.addEventListener('submit', (event) => {
@@ -48,6 +49,9 @@ function persData(obj) {
 }
 
 function popup(text) {
+  if (timerId > 0) {
+    clearTimeout(timerId);
+  }
   const popup = document.querySelector('.popup-container');
   const popupText = document.querySelector('.popup-container__text');
   document.body.classList = 'off-scroll';
@@ -62,45 +66,57 @@ function popup(text) {
     }
   });
 
-  setTimeout(() => {
+  timerId = setTimeout(() => {
     popup.classList.add('hidden');
     document.body.classList = '';
   }, 5000);
 }
 
 function liveSearch() {
+  if (timerId > 0) {
+    clearTimeout(timerId);
+  }
+
+  if (input.value === '') {
+    if (document.querySelector('.live-list')) {
+      document.querySelector('.live-list').remove();
+    }
+  }
+
   let url = api + form.select.value + '/?search=' + form.search.value;
 
-  fetch(url).then( res => {
-    if (res.ok) {
-      return res.json();
-    } else {
-      throw res.status;
-    }
-  })
-  .then(res => {
-    if (res.count > 0 && input.value) {
-      return res.results;
-    } else {
-      if (document.querySelector('.live-list')) {
-        document.querySelector('.live-list').remove();
+  timerId = setTimeout( () => {
+    fetch(url).then( res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        throw res.status;
       }
-      throw res.count;
-    }
-  })
-  .then(result => {
-    const list = addLiveList(input);
-    list.addEventListener('click', event => {
-      if (event.target.tagName === 'LI') {
-        input.value = event.target.innerHTML;
-        document.querySelector('.live-list').remove();
+    })
+    .then(res => {
+      if (res.count > 0 && input.value) {
+        return res.results;
+      } else {
+        if (document.querySelector('.live-list')) {
+          document.querySelector('.live-list').remove();
+        }
+        throw res.count;
       }
-    });
-    for (let obj of result) {
-      list.insertAdjacentHTML('afterbegin', `<li>${obj.name}</li>`);
-    }
-  })
-  .catch(err => console.log(' ошибка, ' + err));
+    })
+    .then(result => {
+      const list = addLiveList(input);
+      list.addEventListener('click', event => {
+        if (event.target.tagName === 'LI') {
+          input.value = event.target.innerHTML;
+          document.querySelector('.live-list').remove();
+        }
+      });
+      for (let obj of result) {
+        list.insertAdjacentHTML('afterbegin', `<li>${obj.name}</li>`);
+      }
+    })
+    .catch(err => console.log(' ошибка, ' + err));
+  }, 200);
 }
 
 function addLiveList(input) {
