@@ -35,6 +35,7 @@ form.addEventListener('submit', (event) => {
 
 input.addEventListener('input' ,liveSearch);
 
+
 function persData(obj) {
   const persName = document.querySelector('.js-name'),
         persHeight = document.querySelector('.js-height'),
