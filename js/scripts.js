@@ -11,6 +11,10 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   let url = api + form.select.value + '/?search=' + form.search.value;
 
+  if (document.querySelector('.live-list')) {
+    document.querySelector('.live-list').remove();
+  }
+
   fetch(url)
     .then( (res) => {
       if (res.ok) {
