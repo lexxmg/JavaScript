@@ -1,4 +1,6 @@
 .football {
+	position: relative;
+
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
@@ -9,11 +11,33 @@
 }
 
 .ball {
-	display: none;
-
 	position: absolute;
 	top: 0;
 	left: 0;
+	z-index: 50;
+	
 	width: 100px;
 	height: 100px;
+}
+
+.goal-left {
+	position: absolute;
+	top: calc(50% - 100px);
+	left: 0;
+
+	width: 80px;
+	height: 200px;
+
+	border: 1px solid red;
+}
+
+.goal-rigth {
+	position: absolute;
+	top: calc(50% - 100px);
+	right: 0;
+
+	width: 80px;
+	height: 200px;
+
+	border: 1px solid red;
 }
