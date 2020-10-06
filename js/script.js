@@ -4,8 +4,9 @@ $(function() {
   const field = $('.field'),
         ball = $('.ball'),
         goalLeft = $('.goal-left'),
-        goalRight = $('.goal-right');
-
+        goalRight = $('.goal-right'),
+        popup = $('.popup-container ');
+        
   ball.on('click', event => {
     if (ball.position().left === 0) {
       ball.animate({
@@ -13,7 +14,10 @@ $(function() {
         left: field.outerWidth()- ball.outerWidth()
       }, 1000, () => {
         if (ball.position().top >= goalLeft.position().top && ball.position().top - ball.outerHeight() <= goalLeft.position().top) {
-          console.log('гол');
+          popup.removeClass('popup-container--hidden');
+          setTimeout( () => {
+            popup.addClass('popup-container--hidden');
+          }, 2000);
         }
       });
     } else {
@@ -22,7 +26,10 @@ $(function() {
         left: 0
       }, 1000, () => {
         if (ball.position().top >= goalLeft.position().top && ball.position().top - ball.outerHeight() <= goalLeft.position().top) {
-          console.log('гол');
+          popup.removeClass('popup-container--hidden');
+          setTimeout( () => {
+            popup.addClass('popup-container--hidden');
+          }, 2000);
         }
       });
     }
