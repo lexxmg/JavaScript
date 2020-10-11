@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="css/master.css">
     <link rel="stylesheet" href="css/btn.css">
+    <link rel="stylesheet" href="css/invert.css">
 
     <script src="js/scripts.js" defer></script>
   </head>
@@ -18,7 +19,15 @@
         <p class="main__text">Здесь будит текст ...</p>
 
         <button class="main__btn btn">Загруить</button>
-        <button class="main__btn btn btn-fetch-js">fetch</button>
+        <button class="main__btn btn-inv btn-fetch-js">
+          <span class="btn-inv__inner">fetch</span>
+          <span class="btn-inv__outer">fetch</span>
+        </button>
+
+        <div class="invert">Lorem ipsum dolor sit amet.
+          <!-- <div class="invert__outer">Lorem ipsum dolor sit amet.</div> -->
+          <div class="invert__inner">Lorem ipsum dolor sit amet.</div>
+        </div>
       </div>
     </main>
   </body>
