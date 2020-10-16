@@ -1,63 +1,53 @@
 "use strict";
 
+class Vehicles {
+  constructor(color, speed) {
+    this.color = color;
+    this.speed = speed;
+  }
 
+  set setColor(color) {
+    this.color = color;
+  }
 
-function Vehicles(color, speed) {
-  this.color = color;
-  this.speed = speed;
-}
+  set setSpeed(speed) {
+    this.speed = speed;
+  }
 
-Vehicles.prototype.setColor = function(color) {
-  this.color = color;
-}
-
-Vehicles.prototype.setSpeed = function(speed) {
-  this.speed = speed;
-}
-
-Vehicles.prototype.getAllProp = function() {
-  for (let key in this) {
-    if ( this.hasOwnProperty(key) ) {
+  get allProp() {
+    for (let key in this) {
       console.log(key + ' = ' + this[key]);
     }
   }
 }
 
-function Car(wheels, color, speed) {
-  Vehicles.call(this, color, speed);
-
-  this.wheels = wheels;
+class Car extends Vehicles {
+  constructor(wheels, color, speed) {
+    super(color, speed);
+    this.wheels = wheels;
+  }
 }
 
-Car.prototype = Object.create(Vehicles.prototype);
-Car.prototype.constructor = Vehicles;
-
-
-function Airplane(wingspan, color, speed) {
-  Vehicles.call(this, color, speed);
-
-  this.wingspan = wingspan;
+class Airplane extends Vehicles {
+  constructor(wingspan, color, speed) {
+    super(color, speed);
+    this.wingspan = wingspan;
+  }
 }
 
-Airplane.prototype = Object.create(Vehicles.prototype);
-Airplane.prototype.constructor = Vehicles;
-
-function Ship(displacement, color, speed) {
-  Vehicles.call(this, color, speed);
-
-  this.displacement = displacement;
+class Ship extends Vehicles {
+  constructor(displacement, color, speed) {
+    super(color, speed);
+    this.displacement = displacement;
+  }
 }
-
-Ship.prototype = Object.create(Vehicles.prototype);
-Ship.prototype.constructor = Vehicles;
-
 
 const car = new Car(4, 'white', 120);
 const airplane = new Airplane(10, 'white', 1200);
 const ship = new Ship(1000, 'gray', 20)
 
-car.getAllProp();
+car.allProp;
 console.log('измениение цвета');
-car.setColor('black');
-car.setSpeed('180');
-car.getAllProp();
+car.setColor = 'black';
+car.setSpeed = '180';
+car.allProp;
