@@ -1,53 +1,28 @@
 "use strict";
 
-class Vehicles {
-  constructor(color, speed) {
-    this.color = color;
-    this.speed = speed;
+class One {
+  constructor() {
+
   }
 
-  set setColor(color) {
-    this.color = color;
-  }
-
-  set setSpeed(speed) {
-    this.speed = speed;
-  }
-
-  get allProp() {
-    for (let key in this) {
-      console.log(key + ' = ' + this[key]);
-    }
+  print() {
+    console.log('one!');
   }
 }
 
-class Car extends Vehicles {
-  constructor(wheels, color, speed) {
-    super(color, speed);
-    this.wheels = wheels;
+class Two extends One {
+  constructor() {
+    super();
+  }
+
+  print() {
+    super.print();
+    console.log('two!');
   }
 }
 
-class Airplane extends Vehicles {
-  constructor(wingspan, color, speed) {
-    super(color, speed);
-    this.wingspan = wingspan;
-  }
-}
+const one = new One();
+const two = new Two();
 
-class Ship extends Vehicles {
-  constructor(displacement, color, speed) {
-    super(color, speed);
-    this.displacement = displacement;
-  }
-}
-
-const car = new Car(4, 'white', 120);
-const airplane = new Airplane(10, 'white', 1200);
-const ship = new Ship(1000, 'gray', 20)
-
-car.allProp;
-console.log('измениение цвета');
-car.setColor = 'black';
-car.setSpeed = '180';
-car.allProp;
+one.print();
+two.print();
