@@ -1,0 +1,27 @@
+{
+  "name": "test-node-js",
+  "version": "1.0.0",
+  "description": "example of using npm for nodeJS",
+  "main": "scripts/scripts.js",
+  "dependencies": {
+    "colors": "^1.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexxmg/JavaScript.git"
+  },
+  "keywords": [
+    "nodeJS",
+    "npm"
+  ],
+  "author": "lexx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lexxmg/JavaScript/issues"
+  },
+  "homepage": "https://github.com/lexxmg/JavaScript#readme"
+}
