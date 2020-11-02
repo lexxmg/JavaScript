@@ -15,4 +15,6 @@ var MyClass = function MyClass() {
   var bar = function bar(x) {
     return x * x;
   };
+
+  console.log(bar(foo));
 };

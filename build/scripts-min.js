@@ -1,0 +1,1 @@
+"use strict";function _classCallCheck(o,s){if(!(o instanceof s))throw new TypeError("Cannot call a class as a function")}var colors=require("colors/safe");console.log(colors.red("test")),console.log(colors.green.underline("test_2"));var MyClass=function o(){_classCallCheck(this,o);var s;console.log((s=1)*s)};
