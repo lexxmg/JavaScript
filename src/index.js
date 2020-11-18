@@ -1,20 +1,30 @@
-//import Button from './button/btn.js';
-//import './button/btn.css';
+'use strict';
 
-const React = require('react');
-const ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-const button = (props) => {
-  return <button>btn</button>;
+const Button = (props) => {
+  return <button>{props.name}</button>;
 }
 
-const Hello = () => {
-  return <h2>ReactDOM</h2>;
+const Hello = (props) => {
+  return <h2>ReactDOM {props.name}</h2>;
 }
 
-const btn = document.createElement('button');
+const App = () => {
+  return (
+    <div>
+      <Hello  name="тест" />
+      <Button  name="кнопка React" />
+    </div>
+  );
+}
 
-btn.innerText = 'кнопка';
-document.body.append(btn);
+//const btn = document.createElement('button');
 
-ReactDOM.render(<Hello />, document.querySelector('.container'));
+//btn.innerText = 'кнопка';
+//document.body.append(btn);
+
+//ReactDOM.render(<Hello  name="тест" />, document.querySelector('.container'));
+//ReactDOM.render(<Button  name="кнопка React" />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('.container'));
