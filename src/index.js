@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './css/style.css';
 
 const Button = (props) => {
   return <button>{props.name}</button>;
@@ -20,11 +21,55 @@ const App = () => {
   );
 }
 
-//const btn = document.createElement('button');
+class TodoApp extends React.Component {
+  constructor() {
+    super();
 
-//btn.innerText = 'кнопка';
-//document.body.append(btn);
+    this.state = {
+      todos: [
+        {name: 'Задача 1', checked: true},
+        {name: 'Задача 2', checked: true},
+        {name: 'Задача 3', checked: false}
+      ]
+    }
+  }
 
-//ReactDOM.render(<Hello  name="тест" />, document.querySelector('.container'));
-//ReactDOM.render(<Button  name="кнопка React" />, document.querySelector('.container'));
-ReactDOM.render(<App />, document.querySelector('.container'));
+  toggleTodo(key) {
+    const todos = this.state.todos.map((todo, i) => {
+      if (key === i) {
+        return {
+          name: todo.name,
+          checked: !todo.checked
+        }
+      } else {
+        return todo;
+      }
+    });
+
+    this.setState({ todos });
+  }
+
+  render() {
+    return (
+      <ol>
+        {
+          this.state.todos.map((todo, i) => {
+            const className = todo.checked ? 'checked' : '';
+
+            return (
+              <li
+                key={i}
+                className={className}
+                onClick={() => this.toggleTodo(i)}
+              >
+                {todo.name}
+              </li>
+            )
+          })
+        }
+      </ol>
+    )
+  }
+}
+
+ReactDOM.render(<TodoApp />, document.querySelector('.container'));
